@@ -21,18 +21,18 @@ const localeCode = "en-US";
 const SLUG = "homepage";
 
 const Page = ({
-  experienceJSON,
+  ...props
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const experience = createExperience(experienceJSON);
+  // const experience = createExperience(experienceJSON);
 
-  const parsedExperience = JSON.parse(experienceJSON);
+  // const parsedExperience = JSON.parse(experienceJSON);
   return (
     <div className="w-full">
-      <ContentfulPageSeo
+      {/* <ContentfulPageSeo
         seo={parsedExperience?.entityStore?._experienceEntry?.seo}
-      />
+      /> */}
 
-      <ExperienceRoot experience={experience} locale={"en-US"} />
+      {/* <ExperienceRoot experience={experience} locale={"en-US"} /> */}
     </div>
   );
 };
@@ -42,20 +42,20 @@ export const getServerSideProps = async ({
   preview,
   query,
 }: GetServerSidePropsContext) => {
-  console.log("zap", preview);
-  const experience = await fetchBySlug({
-    client,
-    slug: SLUG, //could be fetched from the context
-    experienceTypeId,
-    localeCode: params?.locale?.toString() || "en-US",
-  });
+  // console.log("zap", preview);
+  // const experience = await fetchBySlug({
+  //   client,
+  //   slug: SLUG, //could be fetched from the context
+  //   experienceTypeId,
+  //   localeCode: params?.locale?.toString() || "en-US",
+  // });
 
   //Serialize the experience manually
-  const experienceJSON = JSON.stringify(experience);
+  // const experienceJSON = JSON.stringify(experience);
 
   return {
     props: {
-      experienceJSON: experienceJSON,
+      // experienceJSON: experienceJSON,
     },
   };
 };
